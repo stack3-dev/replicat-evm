@@ -1,0 +1,33 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+solc = "0.8.28"
+optimizer = true
+optimizer-runs = 200
+
+# Create2 needed config
+evm_version = "cancun"
+bytecode_hash = "none"
+cbor_metadata = false
+
+fs_permissions = [{ access = "read", path = "./script/config"}]
+
+remappings = [
+    '@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/',
+    '@wormhole/=lib/wormhole-solidity-sdk/src/',
+    '@interop-lib/=lib/interop-lib/src/'
+]
+
+[rpc_endpoints]
+sepolia = "https://eth-sepolia.infura.io/v3/${INFURA_API_KEY}"
+op_sepolia = "https://optimism-sepolia.infura.io/v3/${INFURA_API_KEY}"
+base_sepolia = "https://base-sepolia.infura.io/v3/${INFURA_API_KEY}"
+
+[etherscan]
+sepolia = { key = "${ETHERSCAN_API_KEY}", chain=11155111 }
+op_sepolia = { key = "${OP_ETHERSCAN_API_KEY}", url = "https://api-sepolia-optimistic.etherscan.io/api" , chain=11155420 }
+base_sepolia = { key = "${BASESCAN_API_KEY}", url = "https://api-sepolia.basescan.org/api" , chain=84532 }
+
+# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
+
