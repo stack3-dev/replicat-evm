@@ -8,7 +8,7 @@ using LibAsset for Asset global;
 
 struct Asset {
     AssetType type_;
-    uint256 chainBid; // If the bridged asset is an 'XFT' or 'XNFT', ensure that the chainBid is set to '0'.
+    uint16 chainBid; // If the bridged asset is an 'XFT' or 'XNFT', ensure that the chainBid is set to '0'.
     address address_;
     bytes metadata; // ex: MetadataFT.encode()
 }

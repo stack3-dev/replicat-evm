@@ -18,7 +18,7 @@ contract UtilsScript is Script {
         console.logBytes32(
             Asset({
                 type_: AssetType.FT,
-                chainBid: 11155111,
+                chainBid: 1004,
                 address_: address(0x779877A7B0D9E8603169DdbD7836e478b4624789),
                 metadata: MetadataFT("Test", "TST", 20).encode()
             }).hash()

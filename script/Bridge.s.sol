@@ -8,16 +8,22 @@ import {MetadataFT} from "../src/types/MetadataFT.sol";
 import {LAYERZERO_RELAYER_CLASS} from "../src/utils/RelayerClasses.sol";
 import {Transfer} from "../src/types/Transfer.sol";
 import {TransferParamsFT} from "../src/types/TransferParamsFT.sol";
-import {CREATE_BRIDGE_DEPLOYER_SALT} from "../src/utils/CreateSalt.sol";
+import {CREATE_BRIDGE_SALT} from "../src/utils/CreateSalt.sol";
 import {BridgeDeployer} from "../src/bridge/BridgeDeployer.sol";
 
 contract BridgeScript is Script {
     function setUp() public {}
 
-    function deploy(address initialOwner, uint16 wormholeChainId, address wormholeRelayer) public {
+    function deploy(
+        address initialOwner,
+        uint16 wormholeChainId,
+        address wormholeRelayer
+    ) public {
         vm.startBroadcast();
 
-        BridgeDeployer bridgeDeployer = new BridgeDeployer{salt: CREATE_BRIDGE_DEPLOYER_SALT}(initialOwner);
+        BridgeDeployer bridgeDeployer = new BridgeDeployer{
+            salt: CREATE_BRIDGE_SALT
+        }(initialOwner);
 
         bridgeDeployer.deploy(wormholeChainId, wormholeRelayer);
 
@@ -26,7 +32,7 @@ contract BridgeScript is Script {
 
     function createReplicaERC20(
         address bridge_,
-        uint256 chainBid,
+        uint16 chainBid,
         address assetAddress,
         string memory name,
         string memory symbol,
@@ -41,7 +47,11 @@ contract BridgeScript is Script {
                 type_: AssetType.FT,
                 chainBid: chainBid,
                 address_: assetAddress,
-                metadata: MetadataFT({name: name, symbol: symbol, decimals: decimals}).encode()
+                metadata: MetadataFT({
+                    name: name,
+                    symbol: symbol,
+                    decimals: decimals
+                }).encode()
             }),
             ""
         );
@@ -51,7 +61,7 @@ contract BridgeScript is Script {
 
     function createReplicaERC20Adapter(
         address bridge_,
-        uint256 chainBid,
+        uint16 chainBid,
         address assetAddress,
         string memory name,
         string memory symbol,
@@ -66,7 +76,11 @@ contract BridgeScript is Script {
                 type_: AssetType.FT,
                 chainBid: chainBid,
                 address_: assetAddress,
-                metadata: MetadataFT({name: name, symbol: symbol, decimals: decimals}).encode()
+                metadata: MetadataFT({
+                    name: name,
+                    symbol: symbol,
+                    decimals: decimals
+                }).encode()
             })
         );
 

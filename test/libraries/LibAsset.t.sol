@@ -14,13 +14,17 @@ contract LibAssetTest is Test {
     function test_hash() public pure {
         Asset memory asset = Asset({
             type_: AssetType.FT,
-            chainBid: 11155111,
+            chainBid: 1004,
             address_: address(0x779877A7B0D9E8603169DdbD7836e478b4624789),
-            metadata: MetadataFT({name: "Test", symbol: "TST", decimals: 18}).encode()
+            metadata: MetadataFT({name: "Test", symbol: "TST", decimals: 18})
+                .encode()
         });
 
         bytes32 hash = asset.hash();
 
-        assertEq(hash, 0xcfcb65f5fbc6108c224015b555702fcea4d720f19cafa95044547cff0902350b);
+        assertEq(
+            hash,
+            0xb5f89abbb5021f80d2b1dd770ba79faa76555dfe06b71b80637d2c256bfd4666
+        );
     }
 }
