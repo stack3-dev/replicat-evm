@@ -70,7 +70,7 @@
       "effectiveGasPrice": "0x39462f96c",
       "from": "0xca379f93332bafe1ec1b1bfa7d01e459dc204c25",
       "to": "0x4e59b44847b379578588920ca78fbf26c0b4956c",
-      "contractAddress": "0xc44257abfad12d20c4122e6d01270ce6c4087d8a"
+      "contractAddress": null
     },
     {
       "status": "0x1",
@@ -111,7 +111,7 @@
   ],
   "pending": [],
   "returns": {},
-  "timestamp": 1746547072,
+  "timestamp": 1746546937,
   "chain": 11155111,
   "commit": "5846add"
 }
